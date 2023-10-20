@@ -1,7 +1,12 @@
-import { Configuration, OpenAIApi } from "openai";
-const configuration = new Configuration({
+import OpenAI from "openai";
+import { setup } from "./setup.cjs";
+
+setup();
+
+const configuration = {
     organization: "org-2Vn3OOWh9bWkGmzwKYp70xDg",
     apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
-const response = await openai.listEngines();
+};
+const openai = new OpenAI(configuration);
+const response = openai.models;
+console.log(response);
