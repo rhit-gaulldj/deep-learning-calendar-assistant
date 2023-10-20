@@ -1,0 +1,5 @@
+Pick one of these sections for me to take my CSSE371 class, that fits in my current schedule. MWF means the class is on Monday, Wednesday, and Friday at the specified times.
+MWF 8am-10am
+MWF 10am-12pm
+MWF 1pm-3pm
+MWF 3pm-5pm

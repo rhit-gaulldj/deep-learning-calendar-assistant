@@ -8,5 +8,10 @@ const configuration = {
     apiKey: process.env.OPENAI_API_KEY,
 };
 const openai = new OpenAI(configuration);
-const fineTunes = openai.fineTunes;
 
+
+
+const fileParams = {
+    file: undefined,
+    purpose: 'fine-tune'
+};

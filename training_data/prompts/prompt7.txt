@@ -1,0 +1,5 @@
+I want to take the following classes. I've listed the potential times they're offerred. Please create my class schedule for me, and do make sure to add in a time for lunch and make sure I'm not taking two classes at the same time. M = Monday, T = Tuesday, W = Wednesday, R = Thursday, F = Friday.
+ECE230: MWF 9am-11am; MWF 11am-1pm; MWF 1pm-3pm; MWF 3pm-5pm
+CSSE473: MTRF 3pm-4pm; MTRF 4pm-5pm; MTRF 12pm-1pm
+CSSE474: MTRF 11am-12pm; MTRF 2pm-3pm; MTRF 3pm-4pm
+MA384: MTRF 2pm-3pm; MTRF 3pm-4pm

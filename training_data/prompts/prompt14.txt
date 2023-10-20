@@ -1,0 +1,4 @@
+I want to take the following classes for the year 2023. I've listed the potential times they're offerred. Please create my class schedule for me, and do make sure to add in a time for lunch and make sure I'm not taking two classes at the same time. M = Monday, T = Tuesday, W = Wednesday, R = Thursday, F = Friday.
+CSSE304: MTRF 1pm-3pm; MTRF 2pm-3pm; MTRF 3pm-4pm
+CSSE333: MWF 8am-10am; MWF 10am-12pm; MWF 3pm-5pm
+ECE332: MTRF 12pm-1pm; MTRF 1pm-2pm; MTRF 2pm-3pm
