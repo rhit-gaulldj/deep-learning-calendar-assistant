@@ -8,5 +8,5 @@ const configuration = {
     apiKey: process.env.OPENAI_API_KEY,
 };
 const openai = new OpenAI(configuration);
-const response = openai.models;
-console.log(response);
+const fineTunes = openai.fineTunes;
+console.log(fineTunes);
