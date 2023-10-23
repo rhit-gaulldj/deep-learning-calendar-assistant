@@ -3,12 +3,15 @@ import { setup } from "./setup.cjs";
 import fs from 'fs/promises';
 import * as commonFs from 'fs';
 
-//uploadTraining(20);
-console.log("Currently doing nothing. Please uncomment code if you'd like to upload training files");
+createJsonl(20).then(path => {
+    console.log('JSONL Path ' + path);
+});
+//console.log("Currently doing nothing. Please uncomment code if you'd like to upload training files");
 
 // NOTE: Training File ID: file-G6JrPOJen8ILDgRvFiDCdUgU
 
-async function uploadTraining(max) {
+// Returns path to JSONL file
+async function createJsonl(max) {
     setup();
 
     const configuration = {
@@ -36,7 +39,17 @@ async function uploadTraining(max) {
                 .replaceAll('"', '\"');
         }
 
-        const systemMsg = 'You are a specialized calendar assistant, designed to help users efficiently manage their schedules by providing ICAL formatted text as well as natural language in response to their requests. You should be able to interpret natural language inputs as well as ICAL formatted text to create, modify, or cancel events, meetings, reminders, and other calendar entries. Ensure your responses are concise, accurate, and follow the ICAL format standard.';
+        const date = new Date();
+        const month = date.toLocaleString('default', { month: 'long' });
+        const day = date.getDate();
+        const year = date.getFullYear();
+        const dayOfWeek = date.toLocaleDateString('defaut', { weekday: 'long' });
+
+        const systemMsg = 'You are a specialized calendar assistant, designed to help users efficiently manage their ' + 
+            'schedules by providing ICAL formatted textin response to their requests. You should be able to interpret ' + 
+            'natural language inputs as well as ICAL formatted text to create, modify, or cancel events, meetings, ' + 
+            'reminders, and other calendar entries. Ensure your responses are concise, accurate, and follow the ICAL ' + 
+            `format standard. It is currently ${dayOfWeek} ${month} ${day} ${year}`;
 
         const jsonl = `{"messages":[{ "role": "system", "content": "${systemMsg}" },{ "role": "user", "content": "<ICAL>${sanitize(inputText)}</ICAL> ${sanitize(promptText)}" },{ "role":"assistant", "content": "Here is the requested event in ICAL format:<ICAL>${sanitize(outputText)}</ICAL>" }]}`;
         return jsonl;
@@ -56,6 +69,10 @@ async function uploadTraining(max) {
     const jsonlPath = `./workspace/training_data.jsonl`;
     await fs.writeFile(jsonlPath, fullJsonl);
 
+    return jsonlPath;
+}
+
+async function uploadTraining(jsonlPath) {
     // Now we can upload to the OpenAI server
     const stream = commonFs.createReadStream(jsonlPath, 'utf8');
 
@@ -70,4 +87,4 @@ async function uploadTraining(max) {
     console.log(response);
 }
 
-export { uploadTraining };
+export { createJsonl, uploadTraining };
