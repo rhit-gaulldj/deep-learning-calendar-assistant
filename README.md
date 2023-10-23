@@ -19,3 +19,5 @@ In the root folder of the repository, create a file named `.env`. In there, assi
 Save this file, and this should allow you to access the OpenAI API with the code.
 
 The upload-file.js code is intended to generate the training file, and upload it to the OpenAI website. The start-job.js file is for creating a job to fine-tune based on our training data. You'll have to manually set the file ID based on what is returned from the upload-file.js code.
+
+NOTE: You may need to run `npm install` again when pulling the code if additional packages have been added.
