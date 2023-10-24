@@ -4,12 +4,12 @@ import { setup } from "./setup.cjs";
 setup();
 
 // JOB ID: ftjob-XDkcH2faK9m89PhthtqvpJv0
-const jobId = 'ftjob-XDkcH2faK9m89PhthtqvpJv0';
-const jobFileResult = 'file-I3u9D9k70Qt3SyL4YA6GkYlO';
+const jobId = process.env.OPENAI_JOB_ID;//'ftjob-XDkcH2faK9m89PhthtqvpJv0';
+const jobFileResult = process.env.OPENAI_JOB_FILE_ID;//'file-I3u9D9k70Qt3SyL4YA6GkYlO';
 //createJob();
 
 const configuration = {
-    organization: "org-2Vn3OOWh9bWkGmzwKYp70xDg",
+    organization: process.env.OPENAI_ORG_ID,
     apiKey: process.env.OPENAI_API_KEY,
 };
 const openai = new OpenAI(configuration);
@@ -27,10 +27,10 @@ async function getJobResult(fileId) {
     return file;
 }
 
-async function createJob() {
+async function createJob(fileId) {
 
     // TRAINING FILE ID: file-G6JrPOJen8ILDgRvFiDCdUgU
-    const trainingFileId = 'file-G6JrPOJen8ILDgRvFiDCdUgU';
+    const trainingFileId = process.env.OPENAI_FILE_ID;//'file-G6JrPOJen8ILDgRvFiDCdUgU';
     const jobCreateParams = {
         model: 'gpt-3.5-turbo',
         training_file: trainingFileId,
