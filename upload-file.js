@@ -2,6 +2,7 @@ import OpenAI from "openai";
 import { setup } from "./setup.cjs";
 import fs from 'fs/promises';
 import * as commonFs from 'fs';
+import { getSystemMessage } from "./utilities";
 
 createJsonl(20).then(path => {
     console.log('JSONL Path ' + path);
@@ -13,12 +14,6 @@ createJsonl(20).then(path => {
 // Returns path to JSONL file
 async function createJsonl(max) {
     setup();
-
-    const configuration = {
-        organization: "org-2Vn3OOWh9bWkGmzwKYp70xDg",
-        apiKey: process.env.OPENAI_API_KEY,
-    };
-    const openai = new OpenAI(configuration);
 
     async function generateTrainingJsonl(number) {
         const input = await fs.open(`./training_data/inputs/calendar${number}.ics`, 'r');
@@ -33,25 +28,12 @@ async function createJsonl(max) {
         prompt.close();
         output.close();
 
-        function sanitize(str) {
-            return str.replaceAll('\n', '\\n')
-                .replaceAll('\r', '\\r')
-                .replaceAll('"', '\"');
-        }
+        const systemMsg = getSystemMessage();
 
-        const date = new Date();
-        const month = date.toLocaleString('default', { month: 'long' });
-        const day = date.getDate();
-        const year = date.getFullYear();
-        const dayOfWeek = date.toLocaleDateString('defaut', { weekday: 'long' });
-
-        const systemMsg = 'You are a specialized calendar assistant, designed to help users efficiently manage their ' + 
-            'schedules by providing ICAL formatted textin response to their requests. You should be able to interpret ' + 
-            'natural language inputs as well as ICAL formatted text to create, modify, or cancel events, meetings, ' + 
-            'reminders, and other calendar entries. Ensure your responses are concise, accurate, and follow the ICAL ' + 
-            `format standard. It is currently ${dayOfWeek} ${month} ${day} ${year}`;
-
-        const jsonl = `{"messages":[{ "role": "system", "content": "${systemMsg}" },{ "role": "user", "content": "<ICAL>${sanitize(inputText)}</ICAL> ${sanitize(promptText)}" },{ "role":"assistant", "content": "Here is the requested event in ICAL format:<ICAL>${sanitize(outputText)}</ICAL>" }]}`;
+        const jsonl = `{"messages":[{ "role": "system", "content": "${systemMsg}" },` + 
+            `{ "role": "user", "content": "${getUserMessage(inputText, promptText)}" },` + 
+            `{ "role":"assistant", "content": ` + 
+                `"Here is the requested event in ICAL format:<ICAL>${sanitize(outputText)}</ICAL>" }]}`;
         return jsonl;
     }
 
@@ -73,8 +55,16 @@ async function createJsonl(max) {
 }
 
 async function uploadTraining(jsonlPath) {
+    setup();
+
     // Now we can upload to the OpenAI server
     const stream = commonFs.createReadStream(jsonlPath, 'utf8');
+
+    const configuration = {
+        organization: process.env.OPENAI_ORG_ID,
+        apiKey: process.env.OPENAI_API_KEY,
+    };
+    const openai = new OpenAI(configuration);
 
     const fileParams = {
         file: stream,

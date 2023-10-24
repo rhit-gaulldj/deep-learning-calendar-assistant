@@ -1,4 +1,9 @@
 import express from 'express';
+import { router as apiRouter } from './api-routes.js';
+import bodyParser from 'body-parser';
+import { setup } from "./setup.cjs";
+
+setup();
 
 // Need to create static site
 // Need to write basic API for the site
@@ -8,6 +13,10 @@ const PORT = 3000;
 
 app.use(express.static('public'));
 
+app.use(bodyParser.json());
+
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}.\nURL: https://localhost:${PORT} \nPress Ctrl+C to terminate`);
 });
+
+app.use('/api', apiRouter);
