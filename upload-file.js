@@ -2,7 +2,7 @@ import OpenAI from "openai";
 import { setup } from "./setup.cjs";
 import fs from 'fs/promises';
 import * as commonFs from 'fs';
-import { getSystemMessage } from "./utilities";
+import { getSystemMessage } from "./utilities.js";
 
 createJsonl(20).then(path => {
     console.log('JSONL Path ' + path);
