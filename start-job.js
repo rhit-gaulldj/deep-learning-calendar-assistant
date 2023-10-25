@@ -3,21 +3,20 @@ import { setup } from "./setup.cjs";
 
 setup();
 
-const jobId = process.env.OPENAI_JOB_ID;//'ftjob-XDkcH2faK9m89PhthtqvpJv0';
-const jobFileResult = process.env.OPENAI_JOB_FILE_ID;//'file-I3u9D9k70Qt3SyL4YA6GkYlO';
-//createJob();
-
 const configuration = {
     organization: process.env.OPENAI_ORG_ID,
     apiKey: process.env.OPENAI_API_KEY,
 };
 const openai = new OpenAI(configuration);
 
-// const resp = await openai.fineTuning.jobs.retrieve(jobId);
-// console.log(resp);
+// To create a fine-tuning job, after you've uploaded a file to OpenAI:
+// This will log the response to the console
+// createJob(process.env.OPENAI_FILE_ID);
 
-//const resp = await getJobResult(jobFileResult);
-//console.log(resp);
+// To get a file result, after you've created a fine-tuning job:
+// This will log the response to the console
+// const resp = await getJobResult(process.env.OPENAI_JOB_FILE_ID);
+// console.log(resp);
 
 console.log('Currently does nothing to avoid API costs. Please uncomment code to do something');
 
@@ -28,8 +27,7 @@ async function getJobResult(fileId) {
 
 async function createJob(fileId) {
 
-    // TRAINING FILE ID: file-G6JrPOJen8ILDgRvFiDCdUgU
-    const trainingFileId = process.env.OPENAI_FILE_ID;//'file-G6JrPOJen8ILDgRvFiDCdUgU';
+    const trainingFileId = fileId;
     const jobCreateParams = {
         model: 'gpt-3.5-turbo',
         training_file: trainingFileId,
