@@ -16,7 +16,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}.\nURL: https://localhost:${PORT} \nPress Ctrl+C to terminate`);
+    console.log(`Listening on port ${PORT}.\nURL: http://localhost:${PORT} \nPress Ctrl+C to terminate`);
 });
 
 const apiRouter = getRouter();
