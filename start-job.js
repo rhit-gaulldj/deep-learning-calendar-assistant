@@ -3,7 +3,6 @@ import { setup } from "./setup.cjs";
 
 setup();
 
-// JOB ID: ftjob-XDkcH2faK9m89PhthtqvpJv0
 const jobId = process.env.OPENAI_JOB_ID;//'ftjob-XDkcH2faK9m89PhthtqvpJv0';
 const jobFileResult = process.env.OPENAI_JOB_FILE_ID;//'file-I3u9D9k70Qt3SyL4YA6GkYlO';
 //createJob();
