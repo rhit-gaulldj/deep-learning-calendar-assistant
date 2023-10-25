@@ -11,22 +11,29 @@ export function getRouter() {
 
     const router = express.Router();
 
-    router.post('/prompt', async (req, res, next) => {
+    router.post('/prompt', async (req, res) => {
         const { prompt, calendar } = req.body;
+
+        if (!prompt || !calendar) {
+            res.status(400);
+            res.send('Please provide prompt and calendar in request body');
+            return;
+        }
+
         const messages = [
             { role: 'system', content: getSystemMessage() },
             { role: 'user', content: getUserMessage(calendar, prompt) }
         ];
 
-        const completion = await openai.completions.create({
-            model: process.env.OPENAI_MODEL,
-            messages: messages
-        });
+        // const completion = await openai.completions.create({
+        //     model: process.env.OPENAI_MODEL,
+        //     messages: messages
+        // });
 
-        const openaiResponse = completion.choices[0].text;
+        const openaiResponse = 'test response';//completion.choices[0].text;
         
         res.status(200);
-        res.send({
+        res.json({
             response: openaiResponse,
         });
     });

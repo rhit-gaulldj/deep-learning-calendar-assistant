@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-	<!-- <script src="index.js"></script> -->
+	  <script src="home.js"></script>
     <h1>Calendar Assistant Project</h1>
 
     <div>
@@ -21,7 +21,9 @@
       <textarea id="promptEntry" rows="10" cols="50"></textarea>
     </div>
 
-    <button id="submitButton">Submit</button>
+    <button id="submitButton" onclick="submit()">Submit</button>
+
+    <p id="errorText"></p>
 
     <p id="output">[Output placeholder]</p>
 

@@ -5,3 +5,7 @@
 #promptEntry {
     resize: both;
 }
+
+#errorText {
+    color: red;
+}
