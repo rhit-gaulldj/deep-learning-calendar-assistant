@@ -18,6 +18,20 @@ In the root folder of the repository, create a file named `.env`. In there, assi
 
 Save this file, and this should allow you to access the OpenAI API with the code.
 
+Here are all of the values that must be provided in the `.env` file, along with their descriptions:
+
+OPENAI_API_KEY (Open AI API Key, required to auth user)
+
+OPENAI_ORG_ID (ID of the OpenAI organization)
+
+OPENAI_MODEL (ID of the model to use for generation. This would be the fine-tuned model, the ID of which is provided in the fine-tuning job file)
+
+OPENAI_FILE_ID (ID of the training file in OpenAI. This is used to start the fine-tuning job)
+
+OPENAI_JOB_ID (ID of the fine-tuning job)
+
+OPENAI_JOB_FILE_ID (ID of the result file of the fine-tuning job)
+
 The upload-file.js code is intended to generate the training file, and upload it to the OpenAI website. The start-job.js file is for creating a job to fine-tune based on our training data. You'll have to manually set the file ID based on what is returned from the upload-file.js code.
 
 NOTE: You may need to run `npm install` again when pulling the code if additional packages have been added.
