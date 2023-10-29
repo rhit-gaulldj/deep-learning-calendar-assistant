@@ -7,9 +7,10 @@ import { getSystemMessage } from "./utilities.js";
 createJsonl(30).then(path => {
     console.log('JSONL Path ' + path);
 });
-//console.log("Currently doing nothing. Please uncomment code if you'd like to upload training files");
 
-// NOTE: Training File ID: file-G6JrPOJen8ILDgRvFiDCdUgU
+// To upload:
+// const path = createJsonl(max);
+// uploadTraining(path);
 
 // Returns path to JSONL file
 async function createJsonl(max) {
