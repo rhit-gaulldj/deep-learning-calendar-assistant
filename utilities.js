@@ -12,10 +12,12 @@ export const getSystemMessage = () => {
     const dayOfWeek = date.toLocaleDateString('defaut', { weekday: 'long' });
 
     const systemMsg = 'You are a specialized calendar assistant, designed to help users efficiently manage their ' + 
-        'schedules by providing ICAL formatted textin response to their requests. You should be able to interpret ' + 
+        'schedules by providing ICAL formatted text in response to their requests. You should be able to interpret ' + 
         'natural language inputs as well as ICAL formatted text to create, modify, or cancel events, meetings, ' + 
         'reminders, and other calendar entries. Ensure your responses are concise, accurate, and follow the ICAL ' + 
-        `format standard. It is currently ${dayOfWeek} ${month} ${day} ${year}`;
+        'format standard. You should make sure that, if a user gives you options for an event, you select one of ' +
+        'the options provided by the user. Additionally, you should not provide any response other than the ' +
+        `ICAL-formatted events. It is currently ${dayOfWeek} ${month} ${day} ${year}`;
     return systemMsg;
 };
 export const getUserMessage = (calendar, prompt) => {
