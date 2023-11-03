@@ -24,7 +24,7 @@ OPENAI_API_KEY (Open AI API Key, required to auth user)
 
 OPENAI_ORG_ID (ID of the OpenAI organization)
 
-OPENAI_MODEL (ID of the model to use for generation. This would be the fine-tuned model, the ID of which is provided in the fine-tuning job file)
+OPENAI_MODEL (ID of the model to use for generation. This would be the fine-tuned model, the ID of which is provided in the fine-tuning job file. In the event of no fine-tuning, this will be the GPT model to use \[gpt-3.5-turbo, gpt-4])
 
 OPENAI_FILE_ID (ID of the training file in OpenAI. This is used to start the fine-tuning job)
 
