@@ -12,16 +12,21 @@ export function getRouter() {
     const router = express.Router();
 
     router.post('/prompt', async (req, res) => {
-        const { prompt, calendar } = req.body;
+        const { prompt, calendar, preferences } = req.body;
 
         if (!prompt || !calendar) {
             res.status(400);
             res.send('Please provide prompt and calendar in request body');
             return;
         }
+        if (!preferences) {
+            res.status(400);
+            res.send('Error retrieving preferences');
+            return;
+        }
 
         const messages = [
-            { role: 'system', content: getSystemMessage() },
+            { role: 'system', content: getSystemMessage(preferences) },
             { role: 'user', content: getUserMessage(calendar, prompt) }
         ];
 

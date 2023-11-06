@@ -3,6 +3,13 @@ function submit() {
     const calendar = document.getElementById('calendarEntry').value;
     const prompt = document.getElementById('promptEntry').value;
 
+    const earlyRating = document.getElementById('earlySlider').value;
+    const moveRating = document.getElementById('moveSlider').value;
+    const prefRatings = {
+        early: earlyRating,
+        move: moveRating,
+    };
+
     // Clear the response text
     setResponse('');
     
@@ -24,6 +31,7 @@ function submit() {
         body: JSON.stringify({
             calendar: calendar,
             prompt: prompt,
+            preferences: prefRatings,
         }),
         headers: {
             'Content-Type': 'application/json'

@@ -4,12 +4,13 @@ function sanitize(str) {
         .replaceAll('"', '\"');
 }
 
-export const getSystemMessage = () => {
+export const getSystemMessage = (preferences) => {
+    // TODO: Incorporate preferences here
     const date = new Date();
     const month = date.toLocaleString('default', { month: 'long' });
     const day = date.getDate();
     const year = date.getFullYear();
-    const dayOfWeek = date.toLocaleDateString('defaut', { weekday: 'long' });
+    const dayOfWeek = date.toLocaleDateString('default', { weekday: 'long' });
 
     const systemMsg = 'You are a specialized calendar assistant, designed to help users efficiently manage their ' + 
         'schedules by providing ICAL formatted text in response to their requests. You should be able to interpret ' + 
