@@ -27,7 +27,8 @@ export function getRouter() {
 
         // const completion = await openai.completions.create({
         //     model: process.env.OPENAI_MODEL,
-        //     messages: messages
+        //     messages: messages,
+        //     // temperature: 0.5,
         // });
 
         const openaiResponse = 'test response';//completion.choices[0].text;
