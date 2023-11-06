@@ -48,3 +48,19 @@ function setError(err) {
 function setResponse(text) {
     document.getElementById('output').textContent = text;
 }
+
+function onLoad() {
+    function handleSlider(sliderId, labelId) {
+        const slider = document.getElementById(sliderId);
+        const value = document.getElementById(labelId);
+        value.innerHTML = `${slider.value}/10`; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+            value.innerHTML = `${this.value}/10`;
+        };
+    }
+
+    handleSlider('earlySlider', 'earlyValue');
+    handleSlider('moveSlider', 'moveValue');
+}

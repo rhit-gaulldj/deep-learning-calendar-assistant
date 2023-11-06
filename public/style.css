@@ -9,3 +9,13 @@
 #errorText {
     color: red;
 }
+
+.slider {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.5s;
+}
+
+.slider:hover {
+    opacity: 1;
+}

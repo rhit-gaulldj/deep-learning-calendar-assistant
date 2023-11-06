@@ -7,7 +7,7 @@
     <title>Calendar Assistant</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body onload="onLoad()">
 	  <script src="home.js"></script>
     <h1>Calendar Assistant Project</h1>
 
@@ -21,11 +21,25 @@
       <textarea id="promptEntry" rows="10" cols="50"></textarea>
     </div>
 
+    <div id="slidersContainer">
+      <p>Adjust these sliders to specify your preferences. All sliders are on a 1-10 scale.</p>
+      <div class="sliderContainer">
+        <p>Rate your desire to perform this activity early in the day</p>
+        <input type="range" min="1" max="10" value="5" class="slider" id="earlySlider">
+        <span id="earlyValue">5/10</span>
+      </div>
+      <div class="sliderContainer">
+        <p>Rate your desire to move other activities to make room for this activity</p>
+        <input type="range" min="1" max="10" value="5" class="slider" id="moveSlider">
+        <span id="moveValue">5/10</span>
+      </div>
+    </div>
+
     <button id="submitButton" onclick="submit()">Submit</button>
 
     <p id="errorText"></p>
 
-    <p id="output">[Output placeholder]</p>
+    <p id="output"></p>
 
   </body>
 </html>
