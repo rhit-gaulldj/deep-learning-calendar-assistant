@@ -14,6 +14,12 @@ function submit() {
     const calendar = document.getElementById('calendarEntry').value;
     const prompt = document.getElementById('promptEntry').value;
 
+    const inputCalDiv = document.getElementById('inputCal');
+    const outputCalDiv = document.getElementById('outputCal');
+
+    const calHtml = getCalHtml(calendar);
+    inputCalDiv.innerHTML = calHtml;
+
     const earlyRating = document.getElementById('earlySlider').value;
     const moveRating = document.getElementById('moveSlider').value;
     const prefRatings = {
