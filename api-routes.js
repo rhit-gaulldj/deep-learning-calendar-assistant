@@ -30,17 +30,22 @@ export function getRouter() {
             { role: 'user', content: getUserMessage(calendar, prompt) }
         ];
 
-        // const completion = await openai.completions.create({
-        //     model: process.env.OPENAI_MODEL,
-        //     messages: messages,
-        //     // temperature: 0.5,
-        // });
+        const completion = await openai.chat.completions.create({
+            model: process.env.OPENAI_MODEL,
+            messages: messages,
+            // temperature: 0.5,
+        });
 
-        const openaiResponse = 'test response';//completion.choices[0].text;
+        const openaiResponse = completion.choices[0].message.content;
+
+        // Extract the ICalendar from the response, by finding the <ICAL> tags
+        const regex = /.*?<ical>([\s\S]*?)<\/ical>.*?/i;
+        const matches = openaiResponse.match(regex);
+        const calendarResp = matches[1];
         
         res.status(200);
         res.json({
-            response: openaiResponse,
+            response: calendarResp,
         });
     });
 

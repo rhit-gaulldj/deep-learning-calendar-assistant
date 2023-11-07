@@ -1,4 +1,15 @@
 function submit() {
+    // Show a loading spinner
+    const button = document.getElementById('submitButton');
+    const spinner = document.getElementById('spinner');
+    spinner.classList.remove('hide');
+    button.classList.add('hide');
+
+    function finish() {
+        spinner.classList.add('hide');
+        button.classList.remove('hide');
+    }
+
     // Get the calendar and prompt to send to the API
     const calendar = document.getElementById('calendarEntry').value;
     const prompt = document.getElementById('promptEntry').value;
@@ -15,10 +26,12 @@ function submit() {
     
     if (!calendar || calendar.length <= 0) {
         setError('Calendar is required');
+        finish();
         return;
     }
     if (!prompt || prompt.length <= 0) {
         setError('Prompt is required');
+        finish();
         return;
     }
 
@@ -43,9 +56,11 @@ function submit() {
         if (res.status >= 400) {
             // There was an error
             setError(`Error when handling request: Code ${res.status}`);
+            finish();
         } else {
             const body = await res.json();
             setResponse(body.response);
+            finish();
         }
     });
 }
@@ -54,7 +69,8 @@ function setError(err) {
     document.getElementById('errorText').textContent = err;
 }
 function setResponse(text) {
-    document.getElementById('output').textContent = text;
+    text = text.replaceAll(/[\r\n]+/g, '<br>');
+    document.getElementById('output').innerHTML = text;
 }
 
 function onLoad() {
