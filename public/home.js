@@ -21,8 +21,8 @@ function submit() {
     const inputCalDiv = document.getElementById('inputCal');
     const outputCalDiv = document.getElementById('outputCal');
 
-    const calHtml = getCalHtml(calendar);
-    inputCalDiv.innerHTML = calHtml;
+    // const calHtml = getCalHtml(calendar);
+    // inputCalDiv.innerHTML = calHtml;
 
     const earlyRating = document.getElementById('earlySlider').value;
     const moveRating = document.getElementById('moveSlider').value;
@@ -48,7 +48,6 @@ function submit() {
     // Clear the error text
     setError('');
     
-    // TODO: Remove hardcoding here
     const responsePromise = fetch(`http://localhost:3000/api/prompt`, {
         method: 'POST',
         body: JSON.stringify({

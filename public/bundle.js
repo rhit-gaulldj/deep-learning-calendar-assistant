@@ -5,12 +5,21 @@ module.exports.getCalHtml = function (ical) {
     const jcal = ICAL.parse(ical);
     const component = new ICAL.Component(jcal);
     const events = component.getAllSubcomponents('vevent');
-    console.log(events);
-    for (const evData of events) {
+    const eventStrings = events.map(evData => {
         const event = new ICAL.Event(evData);
-        console.log(event.summary);
-    }
-    return `Test!`;
+
+        const start = event.startDate.toJSDate();
+        const end = event.startDate.toJSDate();
+        return `
+        UID: ${event.uid}
+        Summary: ${event.summary}
+        Desc: ${event.description}
+        Start: ${start.toLocaleString()}
+        End: ${end.toLocaleString()}
+        Duration: ${Math.abs(end.getHours() - start.getHours())}
+        `;
+    });
+    return eventStrings.join('<br>');
 };
 },{"./ical.min.js":3}],2:[function(require,module,exports){
 const { getCalHtml } = require("./cal-disp");
@@ -63,7 +72,6 @@ function submit() {
     // Clear the error text
     setError('');
     
-    // TODO: Remove hardcoding here
     const responsePromise = fetch(`http://localhost:3000/api/prompt`, {
         method: 'POST',
         body: JSON.stringify({
