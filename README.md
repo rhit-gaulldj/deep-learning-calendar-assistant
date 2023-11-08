@@ -2,6 +2,8 @@ Clone the repo into the desired directory.
 
 First, make sure you have NodeJS installed, and make sure it is a recent stable version. I believe we are on Node 20 right now, but Node 16 and 18 should also work. Odd version numbers are not stable (i.e. Node 17 and 19). You can check by running `node --version`. I wrote this in 16.17.0.
 
+You'll also need to install browserify. This bundles code for the browser, but allows it to be written as Node modules. To install, run `npm install -g browserify`. This allows the code for the frontend to build.
+
 Open a terminal in the root directory of the repo, and run `npm install` to install the necessary packages.
 
 You can run individual files with node using `node {file}.js`. For example, `node upload-file.js`.
