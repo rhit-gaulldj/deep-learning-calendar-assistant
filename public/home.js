@@ -1,3 +1,7 @@
+const { getCalHtml } = require("./cal-disp");
+
+document.getElementById('mainBody').onload = onLoad;
+
 function submit() {
     // Show a loading spinner
     const button = document.getElementById('submitButton');
@@ -93,4 +97,6 @@ function onLoad() {
 
     handleSlider('earlySlider', 'earlyValue');
     handleSlider('moveSlider', 'moveValue');
+
+    document.getElementById('submitButton').onclick = submit;
 }

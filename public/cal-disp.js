@@ -1,5 +1,7 @@
-function getCalHtml(ical) {
-    const jcal = ICAL.prase(ical);
+const ICAL = require('./ical.min.js');
+
+module.exports.getCalHtml = function (ical) {
+    const jcal = ICAL.parse(ical);
     const component = new ICAL.Component(jcal);
     const events = component.getAllSubcomponents('vevent');
     console.log(events);
@@ -8,4 +10,4 @@ function getCalHtml(ical) {
         console.log(event.summary);
     }
     return `Test!`;
-}
+};

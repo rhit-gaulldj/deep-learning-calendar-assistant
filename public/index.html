@@ -7,10 +7,10 @@
     <title>Calendar Assistant</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body onload="onLoad()">
+  <body id="mainBody">
     <script src="bundle.js"></script>
-    <script src="cal-disp.js"></script>
-	  <script src="home.js"></script>
+    <!-- <script src="cal-disp.js"></script> -->
+	  <!-- <script src="home.js"></script> -->
 
     <h1>Calendar Assistant Project</h1>
 
@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <button id="submitButton" onclick="submit()">Submit</button>
+    <button id="submitButton">Submit</button>
     <div id="spinner" class="loader hide"></div>
 
     <p id="errorText"></p>
