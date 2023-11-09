@@ -10,7 +10,7 @@ In order to use the OpenAI API you'll need a secret key. For that, go to https:/
 
 Then, create a new secret key. Copy the value of the key. It will only be displayed a single time. If you lose it, you'll have to generate a new key.
 
-In the root folder of the repository, create a file named `.env`. In there, assign a value to `OPENAI_API_KEY`. Example:
+In the root folder of the repository, create a file named `.env` (or rename `example.env` to `.env` and edit it). In there, assign a value to `OPENAI_API_KEY`. Example:
 
 `OPENAI_API_KEY=sk-lkj44alkf345djoianwWJKoie342ewonivdanoiwa`
 
@@ -31,3 +31,5 @@ You can run individual files with node using `node {file}.js`. For example, `nod
 You can also run the `server.js` file with `npm start` (if you open package.json and look the npm scripts, that is where this is defined, it just runs `node server.js`) (after bundling the frontend). This runs the Express server. It will give you a link (localhost:3000) to navigate to the locally-hosted website.
 
 NOTE: You may need to run `npm install` again when pulling the code if additional packages have been added.
+
+Once you've navigated to the website, paste the ICalendar-formatted text into the first textbox, and the natural-language prompt into the second, and submit. It can take quite some time for a result to be returned (think of how long it takes ChatGPT to write a paragraph). We don't stream the results, so it doesn't return until it has completely generated a response.
