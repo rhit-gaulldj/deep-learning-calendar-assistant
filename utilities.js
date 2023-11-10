@@ -31,6 +31,6 @@ export const getSystemMessage = (preferences) => {
     return systemMsg;
 };
 export const getUserMessage = (calendar, prompt) => {
-    return `<ICAL>${sanitize(calendar)}</ICAL> ${sanitize(prompt)}`;
+    return `${sanitize(prompt)} <ICAL>${sanitize(calendar)}</ICAL>`;
 };
 
