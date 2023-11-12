@@ -1,0 +1,55 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+
+BEGIN:VEVENT
+UID:chem111@example.com
+DTSTAMP;TZID=America/New_York:20230101T000000
+DTSTART;TZID=America/New_York:20230102T100000
+DTEND;TZID=America/New_York:20230102T110000
+RRULE:FREQ=WEEKLY;UNTIL=20240101T000000;WKST=SU;BYDAY=MO,TU,TH
+SUMMARY:CHEM111 General Chemistry 1
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chem111L@example.com
+DTSTAMP;TZID=America/New_York:20230101T000000
+DTSTART;TZID=America/New_York:20230102T140000
+DTEND;TZID=America/New_York:20230102T170000
+RRULE:FREQ=WEEKLY;UNTIL=20240101T000000;WKST=SU;BYDAY=WE
+SUMMARY:CHEM111L General Chemistry 1 Lab
+END:VEVENT
+
+BEGIN:VEVENT
+UID:csse371@example.com
+DTSTAMP;TZID=America/New_York:20230101T000000
+DTSTART;TZID=America/New_York:20230102T130000
+DTEND;TZID=America/New_York:20230102T150000
+RRULE:FREQ=WEEKLY;UNTIL=20240101T000000;WKST=SU;BYDAY=MO,WE,FR
+SUMMARY:CSSE371 Software Requirements Engineering
+END:VEVENT
+
+BEGIN:VEVENT
+UID:ma416@example.com
+DTSTAMP;TZID=America/New_York:20230101T000000
+DTSTART;TZID=America/New_York:20230102T110000
+DTEND;TZID=America/New_York:20230102T120000
+RRULE:FREQ=WEEKLY;UNTIL=20240101T000000;WKST=SU;BYDAY=MO,TU,TH,FR
+SUMMARY:MA416 Deep Learning
+END:VEVENT
+
+END:VCALENDAR
+
+I want to do yoga for 1 hour in the morning three times this week. Please put it on my schedule.
+
+
+
+BEGIN:VCALENDAR
+VERSION:2.0
+
+END:VCALENDAR
+
+I want to take the following classes. I've listed the potential times they're offerred. Please create my class schedule for me, and do make sure to add in a time for lunch and make sure I'm not taking two classes at the same time. M = Monday, T = Tuesday, W = Wednesday, R = Thursday, F = Friday.
+ECE230: MWF 9am-11am; MWF 11am-1pm; MWF 1pm-3pm; MWF 3pm-5pm
+CSSE473: MTRF 3pm-4pm; MTRF 4pm-5pm; MTRF 12pm-1pm
+CSSE474: MTRF 11am-12pm; MTRF 2pm-3pm; MTRF 3pm-4pm
+MA384: MTRF 2pm-3pm; MTRF 3pm-4pm
